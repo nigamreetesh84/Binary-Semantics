@@ -1,0 +1,27 @@
+import unittest
+from PeakShareOfCompany import PeakShareOfCompanies
+
+
+class HSFCTest(unittest.TestCase):
+    """Test case for High share for companies"""
+    
+    def setUp(self):
+        self.data = 'google.csv'
+
+
+    def test_check_total_companies(self):
+        """ Verify number of compaies are present in csv file"""
+        print "\nVerifing number of compaies are present in csv file\n"
+        self.assertEqual(len(PeakShareOfCompanies(self.data)), 4)
+
+
+    def test_yearnmonth_of_highestshare_companyB(self):
+        """ Verify company B has peak share """
+        companyDetails = PeakShareOfCompanies(self.data)['CompanyB']
+        print "\nVerifing company B details\n"
+        self.assertEqual(
+            (companyDetails.year,companyDetails.month,companyDetails.price),
+            ("1990", 'April', 1011))
+
+if __name__ == '__main__':
+    unittest.main()
